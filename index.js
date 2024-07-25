@@ -17,11 +17,11 @@ app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.cookie("token", "my_secure_token", {
-    // sameSite: "None",
+    sameSite: "None",
     path: "/",
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     httpOnly: true, // Set to true for security, false for frontend access
-    // secure: false, // Set to true in production with HTTPS
+    secure: true, // Set to true in production with HTTPS
   });
   res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
 });
