@@ -6,7 +6,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://front-omega-gilt.vercel.app/",
+    origin: "https://front-omega-gilt.vercel.app",
     credentials: true,
   })
 );
