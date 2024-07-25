@@ -7,7 +7,7 @@ const app = express();
 // Use CORS to allow requests from the frontend
 app.use(
   cors({
-    origin: "http://localhost:3001", // Update this to your frontend's URL
+    origin: "https://front-omega-gilt.vercel.app", // Update this to your frontend's URL
     credentials: true,
   })
 );
