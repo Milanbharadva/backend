@@ -4,29 +4,26 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 
-// Use CORS to allow requests from the frontend
 app.use(
   cors({
-    origin: "https://front-omega-gilt.vercel.app", // Update this to your frontend's URL
+    origin: "https://front-omega-gilt.vercel.app/",
     credentials: true,
   })
 );
 
-// Use cookie-parser middleware
 app.use(cookieParser());
-
-app.get("/", (req, res) => {
-  res.cookie("token", "my_secure_token", {
+app.get("/setCookie", (req, res) => {
+  res.cookie("token", Date.parse(new Date()), {
     sameSite: "None",
     path: "/",
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-    httpOnly: true, // Set to true for security, false for frontend access
-    secure: true, // Set to true in production with HTTPS
+    httpOnly: true,
+    secure: true,
   });
-  res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
+  res.json("Hello World");
 });
 
-app.get("/endpoint", (req, res) => {
+app.get("/getCookie", (req, res) => {
   console.log("Cookies: ", req.cookies);
   res.json({ message: "Cookie received", cookies: req.cookies });
 });
